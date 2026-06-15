@@ -34,3 +34,14 @@ secrets:
   DB_NAME: "todo"
   DB_USER: "root"
   DB_PASS: "password"
+# ... existing values ...
+
+mysql:
+  auth:
+    rootPassword: password
+    database: todo
+    username: root
+    password: password
+  primary:
+    service:
+      port: 3306
