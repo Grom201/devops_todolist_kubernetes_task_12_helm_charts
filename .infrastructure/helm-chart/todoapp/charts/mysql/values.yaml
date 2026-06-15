@@ -24,3 +24,11 @@ tolerations:
 secrets:
   MYSQL_ROOT_PASSWORD: rootpass
   MYSQL_DATABASE: tododb
+service:
+  type: ClusterIP
+  port: 3306
+serviceAccount:
+  create: true
+  name: mysql-sa
+ingress:
+  enabled: false

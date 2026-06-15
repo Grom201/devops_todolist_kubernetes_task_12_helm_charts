@@ -33,7 +33,7 @@ secrets:
   DB_HOST: "mysql"
   DB_NAME: "todo"
   DB_USER: "root"
-  DB_PASS: "password"
+  DB_PASSOWRD: "password"
 # ... existing values ...
 
 mysql:

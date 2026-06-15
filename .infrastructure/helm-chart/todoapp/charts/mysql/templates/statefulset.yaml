@@ -18,14 +18,13 @@ spec:
       - name: {{ .Chart.Name }}
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         resources:
-          requests: {{ toYaml .Values.resources.requests | nindent 12 }}
-          limits: {{ toYaml .Values.resources.limits | nindent 12 }}
+          {{- toYaml .Values.resources | nindent 10 }}
         env:
         {{- range $key, $value := .Values.secrets }}
         - name: {{ $key }}
           valueFrom:
             secretKeyRef:
-              name: {{ .Chart.Name }}-secret
+              name: {{ $.Chart.Name }}-secret
               key: {{ $key }}
         {{- end }}
         volumeMounts:
@@ -39,7 +38,8 @@ spec:
               - key: {{ .Values.affinity.key }}
                 operator: In
                 values: {{ .Values.affinity.values | toJson }}
-      tolerations: {{ toYaml .Values.tolerations | nindent 8 }}
+      tolerations:
+      {{ toYaml .Values.tolerations | nindent 8 }}
   volumeClaimTemplates:
   - metadata:
       name: data
