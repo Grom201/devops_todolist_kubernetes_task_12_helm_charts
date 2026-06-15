@@ -1,0 +1,26 @@
+namespace: mysql-ns
+replicas: 1
+image:
+  repository: mysql
+  tag: latest
+resources:
+  requests:
+    memory: "256Mi"
+    cpu: "250m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+persistence:
+  storage: "1Gi"
+affinity:
+  key: app
+  values:
+    - mysql
+tolerations:
+  - key: "app"
+    operator: "Equal"
+    value: "mysql"
+    effect: "NoSchedule"
+secrets:
+  MYSQL_ROOT_PASSWORD: rootpass
+  MYSQL_DATABASE: tododb

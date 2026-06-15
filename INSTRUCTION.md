@@ -6,13 +6,13 @@
 - kubectl
 
 ## Setup
-1. Create cluster:
-   ```bash
-   kind create cluster --config cluster.yml
-
-2. run bootstrap:
+1. run bootstrap:
+Running `./bootstrap.sh` will also generate `output.log` in the repository root.
+No additional commands are required unless you want to regenerate the file.
    ```bash
     ./bootstrap.sh
-3. verify deployment:
+   ```
+2. verify deployment:
    ```bash
     kubectl get all,cm,secret,ing -A
+   ```
