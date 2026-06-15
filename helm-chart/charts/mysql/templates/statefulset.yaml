@@ -23,7 +23,10 @@ spec:
         env:
         {{- range $key, $value := .Values.secrets }}
         - name: {{ $key }}
-          value: {{ $value | quote }}
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Chart.Name }}-secret
+              key: {{ $key }}
         {{- end }}
         volumeMounts:
         - name: data

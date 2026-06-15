@@ -5,7 +5,6 @@
 - Helm
 - kubectl
 
-
 ## Setup
 1. Create cluster:
    ```bash
